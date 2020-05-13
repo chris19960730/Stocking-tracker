@@ -1,13 +1,26 @@
 @import "bootstrap/dist/css/bootstrap";
 
-// .navbar {
-//   background-color: #fdf6ea !important;
-// }
+.custom-nav {
+  padding-left: 0;
+  padding-right: 0;
+}
 
-// .navbar-brand {
-//   font-size: 3rem;
-// }
+.search-area {
+  padding-top: 50px;
+}
 
-// h1 {
-//   color: red;
-// }
+.no-right-padding {
+  padding-right: 0 !important;
+}
+
+.no-left-padding {
+  padding-left: 0 !important;
+}
+.logo {
+  width: 128px;
+  height: 128px;
+}
+
+.results-block {
+  display: inline-block;
+}

@@ -5,7 +5,8 @@ class Stock < ApplicationRecord
       secret_token: Rails.application.credentials.iex_client[:secret_token],
       endpoint: "https://sandbox.iexapis.com/v1",
     )
-    client.price(ticker_symbol)
+    #client.logo(ticker_symbol)
+    new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol), logo: ("https://storage.googleapis.com/iex/api/logos/" + ticker_symbol + ".png"))
   end
 
   def self.get_logo(ticker_symbol)
