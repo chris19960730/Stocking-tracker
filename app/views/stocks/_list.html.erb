@@ -18,7 +18,7 @@
                     <td><img src='<%= stock.logo %>' class="logo"></td>
                     <td><%= stock.name %></td>
                     <td><%= stock.last_price %></td>
-                    <td>Action</td>
+                    <td><%= link_to "Remove", user_stock_path(stock), method: :delete, class: "btn btn-sm btn-danger" %></td>
                     </tr>
                     <tr>
                 <% end %>

@@ -3,7 +3,7 @@
         
           
           <%= link_to "Finance Tracker", root_path, class: "navbar-brand" %>
-          
+          <% if user_signed_in? %>          
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -14,7 +14,26 @@
                 <%= link_to "My portfolio", my_portfolio_path, class: "nav-link" %>
               </li>
               
-              <% if !user_signed_in? %>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                  <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                    <%= fa_icon "edit" %> Edit profile 
+                  <% end %>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              
+            </ul>
+            <% end %>
+            <ul class="navbar-nav mr-3">
+            <% if !user_signed_in? %>
               <li class="nav-item">
               <%= link_to "Login in", new_user_session_path, class: "nav-link" %>
                 
@@ -23,22 +42,15 @@
                 <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
               </li>
               <% else %>
+              <li class="nav-item user_name">
+                <%= fa_icon "user" %> <%= current_user.full_name %>
+              </li>
+
               <li class="nav-item">
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
               
               <% end %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Placeholder
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
               
             </ul>
 
