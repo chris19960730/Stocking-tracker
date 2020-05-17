@@ -19,7 +19,9 @@
                     
                    
                    
-                    <td><%= link_to "Stop following", "#", class: "btn btn-sm btn-danger" %></td>
+                    <td>
+                    <%= link_to "View profile", user_path(friend), class: "btn btn-sm btn-success" %>
+                    <%= link_to "Stop following", friendship_path(friend), method: :delete, class: "btn btn-sm btn-danger" %></td>
                     </tr>
                     <tr>
                 <% end %>
