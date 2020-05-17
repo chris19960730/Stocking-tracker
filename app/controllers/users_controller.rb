@@ -34,4 +34,17 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def refresh_stock
+    stocks = current_user.stocks
+    stocks.each do |stock|
+      new_price = Stock.new_lookup(stock.ticker).last_price
+      stock.update(last_price: new_price)
+    end
+    flash[:notice] = "Refreshed and get the lastest prices"
+
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end
+  end
 end
